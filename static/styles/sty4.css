@@ -1,0 +1,128 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
+  background: url(../assets/images/dc52bf11a6f750cc2be804d92ff7835b1b21c724.png)
+    no-repeat center;
+  background-size: cover;
+  overflow: hidden;
+}
+.rectangle {
+  position: relative;
+  width: 1176px;
+  height: 846px;
+  margin: 88px 0 0 140px;
+  background: url(./assets/images/9a0aaa68-868b-473b-819b-f5fde7828295.png)
+    no-repeat center;
+  background-size: cover;
+  overflow: visible auto;
+}
+.rectangle-1 {
+  position: relative;
+  width: 435px;
+  height: 651px;
+  margin: 98px 0 0 370px;
+  font-size: 0px;
+  background: url(./assets/images/5dc2c505-efb4-46b3-aec8-b09e7a6ec6aa.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 1;
+  overflow: visible auto;
+}
+.password-change-successful {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  width: 390px;
+  height: 123px;
+  margin: 346px 0 0 26px;
+  color: #000000;
+  font-family: Red Hat Display, var(--default-font-family);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  z-index: 2;
+}
+.image {
+  position: absolute;
+  width: 245px;
+  height: 240px;
+  top: 53px;
+  left: 87px;
+  background: url(./assets/images/ebbb0c40eabc5692a8cb3c4e05edad3e893482b4.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 6;
+}
+.text-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 66px;
+  top: 276px;
+  left: 117px;
+  color: #000000;
+  font-family: Red Hat Display, var(--default-font-family);
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 66px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 3;
+}
+.text-3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 90px;
+  top: 492px;
+  left: 155px;
+  color: #ffffff;
+  font-family: Red Hat Display, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 90px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 5;
+}
+.Button {
+  position: absolute;
+  width: 370px;
+  height: 88px;
+  top: 494px;
+  left: 26px;
+  cursor: pointer;
+  background: #b54af6;
+  border: none;
+  z-index: 4;
+  border-radius: 20px;
+}
