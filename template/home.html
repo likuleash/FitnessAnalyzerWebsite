@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Estimation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .upload-section, .preview-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .preview-section {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+        
+        #preview {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Video for Pose Estimation</h1>
+    
+    <div class="upload-section">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="video/*,image/*" required id="fileInput" onchange="previewFile()">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+    <div class="preview-section">
+        <img id="preview" src="" alt="" style="display: none;">
+        <video id="videoPreview" controls style="height: 500px; width: 500px;"></video>
+    </div>
+
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const videoPreview = document.getElementById('videoPreview');
+            const file = document.getElementById('fileInput').files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                if (file.type.startsWith('image/')) {
+                    preview.src = reader.result;
+                    preview.style.display = 'block';
+                    videoPreview.style.display = 'none';
+                } else if (file.type.startsWith('video/')) {
+                    videoPreview.src = reader.result;
+                    videoPreview.style.display = 'block';
+                    preview.style.display = 'none';
+                }
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Estimation</title>
+</head>
+<body>
+    <h1>Upload Video for Pose Estimation</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*" required>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html> -->
+
+
+<!-- sample -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>This is a simple HTML page example.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 My Website</p>
+    </footer>
+</body>
+</html> -->

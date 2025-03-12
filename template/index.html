@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Estimation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .upload-section, .preview-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .preview-section {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+        
+        #preview {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pose Estimation</h1>
+
+    <h3>For Videos:</h3>
+    <div class="upload-section">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="video/*,image/*" required id="fileInput" onchange="previewFile()">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+    <div class="preview-section">
+        <img id="preview" src="" alt="" style="display: none;">
+        <video id="videoPreview" controls style="height: 500px; width: 500px;"></video>
+    </div>
+
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('preview');
+            const videoPreview = document.getElementById('videoPreview');
+            const file = document.getElementById('fileInput').files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                if (file.type.startsWith('image/')) {
+                    preview.src = reader.result;
+                    preview.style.display = 'block';
+                    videoPreview.style.display = 'none';
+                } else if (file.type.startsWith('video/')) {
+                    videoPreview.src = reader.result;
+                    videoPreview.style.display = 'block';
+                    preview.style.display = 'none';
+                }
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+<h3>For Images</h3>
+<form action="/upload_img" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" accept="image/*">
+  <button type="submit">Upload</button>
+</form>
+
+<!-- <pre id="responseText">Waiting for response...</pre>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent form from reloading the page
+            
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                document.getElementById('responseText').textContent = 'Please select a file.';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/upload_img', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const jsonResponse = await response.json();
+                document.getElementById('responseText').textContent = JSON.stringify(jsonResponse, null, 2);
+            } catch (error) {
+                document.getElementById('responseText').textContent = 'Error uploading file.';
+                console.error(error);
+            }
+        });
+    </script> -->
+
+</body>
+</html>
